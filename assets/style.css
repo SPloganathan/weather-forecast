@@ -1,11 +1,28 @@
 body {
   font-family: "Playfair Display", serif !important;
   font-size: 16px;
+  height: 100vh;
 }
+
+/* common colors */
+:root {
+  --primary-color: #cbcbec;
+  --background-color: #ccccd3b5;
+}
+
 .title-section {
   display: flex;
   justify-content: center;
-  background-color: #cbcbec;
+  background-color: var(--primary-color);
   padding: 20px;
   border-bottom: 4px solid black;
+}
+
+.search-column {
+  background-color: var(--background-color);
+  border-right: 4px solid black;
+}
+
+.weather-column {
+  background-color: var(--background-color);
 }
