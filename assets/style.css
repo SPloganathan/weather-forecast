@@ -10,6 +10,20 @@ body {
   --background-color: #ccccd3b5;
 }
 
+.btn-bd-primary {
+  background-color: #cbcbec !important;
+  color: black !important;
+  border-color: black !important;
+}
+
+.btn-bd-primary:hover {
+  background-color: #e7c8ef4d !important;
+}
+
+.storage-button {
+  color: black !important;
+}
+
 .title-section {
   display: flex;
   justify-content: center;
@@ -21,8 +35,13 @@ body {
 .search-column {
   background-color: var(--background-color);
   border-right: 4px solid black;
+  padding: 10px 25px !important;
 }
 
 .weather-column {
   background-color: var(--background-color);
+}
+
+.search-input {
+  border: 1px solid black !important;
 }
