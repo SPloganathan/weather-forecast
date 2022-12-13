@@ -9,7 +9,7 @@ body {
   --primary-color: #cbcbec;
   --background-color: #ccccd3b5;
 }
-
+/* adding ' !important ' here to override the bootstrap stylings */
 .btn-bd-primary {
   background-color: #cbcbec !important;
   color: black !important;
@@ -40,8 +40,22 @@ body {
 
 .weather-column {
   background-color: var(--background-color);
+  padding: 10px 25px !important;
 }
 
 .search-input {
   border: 1px solid black !important;
+}
+
+.city-name,
+.future-title {
+  font-weight: bolder;
+}
+
+.card {
+  border-color: black !important;
+}
+
+.custom-card {
+  background-color: var(--primary-color) !important;
 }
