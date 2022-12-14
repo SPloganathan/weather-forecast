@@ -28,7 +28,7 @@ document
       });
     /* using if condition checking if we have a valid lon and lat value and using it to fetch the actual weather details */
 
-    if (lat !== "" && lon !== "") {
+    if (lat && lon) {
       let weatherData = "";
       let weatherRequestUrl =
         "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -43,5 +43,25 @@ document
         .then(function (data) {
           weatherData = data;
         });
+      /* once we get a valid weather data then query selecting and assigning the values in the elements */
+      if (weatherData) {
+        let currentDayWeather = weatherData.list[0];
+        let temperature = currentDayWeather.main.temp;
+        let wind = currentDayWeather.wind.speed;
+        let humidity = currentDayWeather.main.humidity;
+        let icon = currentDayWeather.weather[0].icon;
+        console.log(temperature, wind, humidity, icon);
+        document.querySelector("#city-name").textContent =
+          cityName + " (" + dayjs().format("MM/DD/YYYY") + ")";
+        document.querySelector("#current-temp").textContent =
+          "Temp: " + temperature + "\xB0 F";
+        document.querySelector("#current-wind").textContent =
+          "Wind: " + wind + " MPH";
+        document.querySelector("#current-humidity").textContent =
+          "Humidity: " + humidity + " %";
+        /* weather api icon url */
+        document.querySelector("#current-weather-image").src =
+          "http://openweathermap.org/img/wn/" + icon + ".png";
+      }
     }
   });

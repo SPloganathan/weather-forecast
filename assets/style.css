@@ -59,3 +59,8 @@ body {
 .custom-card {
   background-color: var(--primary-color) !important;
 }
+
+.name-icon-group {
+  display: flex;
+  align-items: center;
+}

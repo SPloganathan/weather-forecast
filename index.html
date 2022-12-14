@@ -107,13 +107,14 @@
       <div class="col-md-9 col-sm-12 weather-column">
         <div class="card mb-5">
           <div class="card-body">
-            <h4 class="city-name">
-              San Jose (12/13/2022)
-              <img src="https://img.icons8.com/emoji/24/null/sun-emoji.png" />
-            </h4>
-            <p class="city-text">Temp: 76.62&deg;F</p>
-            <p class="city-text">Wind: 8.43 MPH</p>
-            <p class="city-text">Humidity: 44 %</p>
+            <div class="name-icon-group">
+              <h4 class="city-name" id="city-name"></h4>
+              <img id="current-weather-image" src="" />
+            </div>
+
+            <p class="city-text" id="current-temp"></p>
+            <p class="city-text" id="current-wind"></p>
+            <p class="city-text" id="current-humidity"></p>
           </div>
         </div>
         <div class="card">
@@ -177,5 +178,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="./assets/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
