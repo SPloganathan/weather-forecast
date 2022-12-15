@@ -63,6 +63,8 @@ document
         document.querySelector("#current-weather-image").src =
           "http://openweathermap.org/img/wn/" + icon + ".png";
         /* Iterating for next 5 days weather forecast */
+        let cardElement = "";
+
         for (let i = 1; i <= 5; i++) {
           /* adding one day to current date using "i" */
           let nextDay = dayjs().add(i, "day");
@@ -72,8 +74,22 @@ document
               dayjs(eachDay.dt_txt).format("YYYY-M-D") ===
               nextDay.format("YYYY-M-D")
           );
-          console.log(nextDateWeather);
+
+          let temperature = nextDateWeather.main.temp;
+          let wind = nextDateWeather.wind.speed;
+          let humidity = nextDateWeather.main.humidity;
+          let icon = nextDateWeather.weather[0].icon;
+          cardElement += `<div class="card col-lg-2 col-sm-12 me-4 custom-card">
+          <div class="card-body">
+            <h4 class="city-name" id="date">(${nextDay.format("M/D/YYYY")})</h4>
+            <img src="${"http://openweathermap.org/img/wn/" + icon + ".png"}" />
+            <p class="city-text">Temp: ${temperature}&deg;F</p>
+            <p class="city-text">Wind: ${wind} MPH</p>
+            <p class="city-text">Humidity: ${humidity} %</p>
+          </div>
+        </div>`;
         }
+        document.querySelector("#day-wise-section").innerHTML = cardElement;
       }
     }
     document.querySelector(".weather-column").style.display = "block";
