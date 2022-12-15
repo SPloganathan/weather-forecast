@@ -39,6 +39,7 @@ body {
 }
 
 .weather-column {
+  display: none;
   background-color: var(--background-color);
   padding: 10px 25px !important;
 }

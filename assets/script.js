@@ -62,6 +62,19 @@ document
         /* weather api icon url */
         document.querySelector("#current-weather-image").src =
           "http://openweathermap.org/img/wn/" + icon + ".png";
+        /* Iterating for next 5 days weather forecast */
+        for (let i = 1; i <= 5; i++) {
+          /* adding one day to current date using "i" */
+          let nextDay = dayjs().add(i, "day");
+          /* Finding the "nextDay" weather by comparing the date from the list using dayjs format function, since the time varies */
+          let nextDateWeather = weatherData.list.find(
+            (eachDay) =>
+              dayjs(eachDay.dt_txt).format("YYYY-M-D") ===
+              nextDay.format("YYYY-M-D")
+          );
+          console.log(nextDateWeather);
+        }
       }
     }
+    document.querySelector(".weather-column").style.display = "block";
   });
