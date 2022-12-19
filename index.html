@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <!-- CSS Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <!-- added title -->
+    <header class="title-section">
+      <h2 class="title-text">Weather Dashboard</h2>
+    </header>
+    <!-- using bootstrap splited 2 columns -->
+
+    <div class="row h-100">
+      <!-- using left column to dipplay search inputs for cities and local storage city using bootstrap -->
+      <div class="col-md-3 col-sm-12 search-column">
+        <div class="input-group mb-3">
+          <h4 class="search-title">Search for a city</h4>
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Type city name"
+            aria-label="search"
+            aria-describedby="addon-wrapping"
+            id="search-city-name"
+          />
+        </div>
+        <div class="d-grid mb-5">
+          <button
+            class="btn btn-primary btn-bd-primary"
+            type="button"
+            id="search-button"
+          >
+            Search
+          </button>
+        </div>
+        <div id="search-column"></div>
+      </div>
+
+      <!-- using the right column to display weather forecast. And it is splited into two seperate div. One for
+      displaying the current forecast of the city and the second one for future forecasts using bootstrap -->
+      <div class="col-md-9 col-sm-12 weather-column">
+        <div class="card mb-5">
+          <div class="card-body">
+            <div class="name-icon-group">
+              <h4 class="city-name" id="city-name"></h4>
+              <img id="current-weather-image" src="" />
+            </div>
+
+            <p class="city-text" id="current-temp"></p>
+            <p class="city-text" id="current-wind"></p>
+            <p class="city-text" id="current-humidity"></p>
+          </div>
+        </div>
+        <div class="card">
+          <h4 class="future-title ms-3 mt-2">5-Day Forecast</h4>
+          <div class="card-body row" id="day-wise-section"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- JavaScript Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
