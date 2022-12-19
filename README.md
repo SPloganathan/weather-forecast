@@ -32,3 +32,5 @@ The challenge is to build a weather dashboard that will run in the browser and f
 ## Deployed Screenshot and URL
 
 ![alt+text](./assets/screenshots/weather%20forecast.png)
+
+## https://sploganathan.github.io/weather-forecast/
