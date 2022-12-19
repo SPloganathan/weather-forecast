@@ -12,7 +12,7 @@ document
     }
 
     let coordinatesRequestUrl =
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
       cityName +
       "&limit=1&appid=c4d8aa17891ee763b028f523635c2fad";
     /*  using fetch we are getting the latitude and longitude
@@ -66,7 +66,7 @@ document
           "Humidity: " + humidity + " %";
         /* weather api icon url */
         document.querySelector("#current-weather-image").src =
-          "http://openweathermap.org/img/wn/" + icon + ".png";
+          "https://openweathermap.org/img/wn/" + icon + ".png";
         /* Iterating for next 5 days weather forecast */
         let cardElement = "";
 
@@ -87,7 +87,7 @@ document
           cardElement += `<div class="card col-lg-2 col-sm-12 ms-lg-3 mb-sm-4 custom-card">
         <div class="card-body card-body-weather">
           <h4 class="city-name" id="date">(${nextDay.format("M/D/YYYY")})</h4>
-          <img src="${"http://openweathermap.org/img/wn/" + icon + ".png"}" />
+          <img src="${"https://openweathermap.org/img/wn/" + icon + ".png"}" />
           <p class="city-text">Temp: ${temperature}&deg;F</p>
           <p class="city-text">Wind: ${wind} MPH</p>
           <p class="city-text">Humidity: ${humidity} %</p>
