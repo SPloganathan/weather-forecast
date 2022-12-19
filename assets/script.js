@@ -1,29 +1,32 @@
 /* query selecting search button to add a click event. On clicking fetch happens! */
 document
-  .querySelector("#search-button")
+  .querySelector(".search-column")
   .addEventListener("click", async function (event) {
-    let searchedCityName = event.target.getAttribute("data-cityName");
-    console.log(event);
-    let cityName = document.querySelector("#search-city-name").value;
-    addCityToStorage(cityName);
-    console.log(cityName);
+    if (event.target.nodeName !== "BUTTON") {
+      return;
+    }
+    let cityName = event.target.getAttribute("data-cityName");
+    if (!cityName) {
+      cityName = document.querySelector("#search-city-name").value;
+      addCityToStorage(cityName);
+    }
+
     let coordinatesRequestUrl =
       "http://api.openweathermap.org/geo/1.0/direct?q=" +
       cityName +
       "&limit=1&appid=c4d8aa17891ee763b028f523635c2fad";
     /*  using fetch we are getting the latitude and longitude
-    of a city.*/
+  of a city.*/
     /* setting empty string to lat and lon variable so that we can assign the actual data from the api response later */
     let lat = "";
     let lon = "";
     /* 'await' holds the current execution till we get the response back.Once we get the response it moves to next line (which is line 31 here ). 
-    Awaits can only be used inside asynchronous functions */
+  Awaits can only be used inside asynchronous functions */
     await fetch(coordinatesRequestUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         if (data && data.length) {
           lat = data[0].lat;
           lon = data[0].lon;
@@ -53,7 +56,6 @@ document
         let wind = currentDayWeather.wind.speed;
         let humidity = currentDayWeather.main.humidity;
         let icon = currentDayWeather.weather[0].icon;
-        console.log(temperature, wind, humidity, icon);
         document.querySelector("#city-name").textContent =
           cityName + " (" + dayjs().format("MM/DD/YYYY") + ")";
         document.querySelector("#current-temp").textContent =
@@ -82,15 +84,15 @@ document
           let wind = nextDateWeather.wind.speed;
           let humidity = nextDateWeather.main.humidity;
           let icon = nextDateWeather.weather[0].icon;
-          cardElement += `<div class="card col-lg-2 col-sm-12 me-4 custom-card">
-          <div class="card-body">
-            <h4 class="city-name" id="date">(${nextDay.format("M/D/YYYY")})</h4>
-            <img src="${"http://openweathermap.org/img/wn/" + icon + ".png"}" />
-            <p class="city-text">Temp: ${temperature}&deg;F</p>
-            <p class="city-text">Wind: ${wind} MPH</p>
-            <p class="city-text">Humidity: ${humidity} %</p>
-          </div>
-        </div>`;
+          cardElement += `<div class="card col-lg-2 col-sm-12 ms-lg-3 mb-sm-4 custom-card">
+        <div class="card-body card-body-weather">
+          <h4 class="city-name" id="date">(${nextDay.format("M/D/YYYY")})</h4>
+          <img src="${"http://openweathermap.org/img/wn/" + icon + ".png"}" />
+          <p class="city-text">Temp: ${temperature}&deg;F</p>
+          <p class="city-text">Wind: ${wind} MPH</p>
+          <p class="city-text">Humidity: ${humidity} %</p>
+        </div>
+      </div>`;
         }
         /* appending the values to HTML div */
         document.querySelector("#day-wise-section").innerHTML = cardElement;
@@ -98,6 +100,7 @@ document
     }
     document.querySelector(".weather-column").style.display = "block";
   });
+
 /* adding the searched cities to the local storage using */
 function addCityToStorage(cityName) {
   let availableCity = window.localStorage.getItem("cityName");
@@ -107,7 +110,9 @@ function addCityToStorage(cityName) {
   } else {
     /* Parse here converts the string to native datatype */
     let availableCityArray = JSON.parse(availableCity);
-    availableCityArray.push(cityName);
+    if (!availableCityArray.includes(cityName)) {
+      availableCityArray.push(cityName);
+    }
     window.localStorage.setItem("cityName", JSON.stringify(availableCityArray));
   }
   /* first we should write a function 'appendsearchedcity() ' to display the
@@ -136,5 +141,6 @@ function appendSearchedCity() {
     document.querySelector("#search-column").innerHTML = buttonElement;
   }
 }
+
 /* this is called here to display the city names when we reload the page*/
 appendSearchedCity();

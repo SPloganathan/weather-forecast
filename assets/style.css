@@ -8,12 +8,13 @@ body {
 :root {
   --primary-color: #cbcbec;
   --background-color: #ccccd3b5;
+  --foreground-color: black;
 }
 /* adding ' !important ' here to override the bootstrap stylings */
 .btn-bd-primary {
-  background-color: #cbcbec !important;
-  color: black !important;
-  border-color: black !important;
+  background-color: var(--primary-color) !important;
+  color: var(--foreground-color) !important;
+  border-color: var(--foreground-color) !important;
 }
 
 .btn-bd-primary:hover {
@@ -21,7 +22,7 @@ body {
 }
 
 .storage-button {
-  color: black !important;
+  color: var(--foreground-color) !important;
 }
 
 .title-section {
@@ -29,12 +30,12 @@ body {
   justify-content: center;
   background-color: var(--primary-color);
   padding: 20px;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid var(--foreground-color);
 }
 
 .search-column {
   background-color: var(--background-color);
-  border-right: 4px solid black;
+  border-right: 4px solid var(--foreground-color);
   padding: 10px 25px !important;
 }
 
@@ -45,7 +46,7 @@ body {
 }
 
 .search-input {
-  border: 1px solid black !important;
+  border: 1px solid var(--foreground-color) !important;
 }
 
 .city-name,
@@ -54,18 +55,18 @@ body {
 }
 
 .card {
-  border-color: black !important;
+  border-color: var(--foreground-color) !important;
 }
 
 .custom-card {
   background-color: var(--primary-color) !important;
 }
 
-.custom-card:first-child {
-  margin-left: 10px !important;
-}
-
 .name-icon-group {
   display: flex;
   align-items: center;
+}
+
+.card-body-weather {
+  padding: 5px !important;
 }
